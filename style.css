@@ -86,7 +86,12 @@ button {
     border: rgba(0,0,0,0);
     border-radius: 20px;
 }
-
+@media screen and (max-width: 989px) {
+    button .submit {
+        width:50px;
+        margin-left:0;
+    }
+}
 .white {
     font-family: 'Sedgwick Ave', cursive;
     /* margin: 30px; */
@@ -101,4 +106,8 @@ button {
         margin-left:10px;
     }
 
+}
+
+.center {
+    text-align: center;
 }
