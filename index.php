@@ -1,14 +1,9 @@
-
 <?php session_start();
 include("functions.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    <!-- The Ajax fuction does not work for some reason. I have been trying for hours to fix it but -->
-    <!-- I could not get it to work. I am sure I will fix it by tommorow(11 Desember). I have also tried a other ways but --> 
-    <!-- then it is either the page not refreshing or php not grabbing the ingo ect. I apologize for it not working like it should.-->
-    <!-- Please still do look at my code, I feel like it is supposed to be working. -->
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +20,17 @@ include("functions.php");
 <body style="background-image: url('https://viral-a.com/wp-content/uploads/2018/10/vacation.jpg');">
 <?php
     createDatabase();
+    if(isset($_POST["submit"])){
+        // var_dump($_POST);
+        $email = $_POST["submit"];
+        $checkEmail = email_update($email);
+        if($checkEmail == true) {
+            echo("<script> alert('Thank you, furhter info will be sent to your email adress.')</script>");
+        }
+    }
 ?>
     <div class="container shadow">
+<div class="remove">
         <div class=" container">
             <div class="container">
                 <div class="row">
@@ -44,13 +48,14 @@ include("functions.php");
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
                             <form class="wideness" action="" method="POST" >
-                                <label style="margin-left:40px;" class="text-monospace text-center nameAndEmail">Enter your name and e-mail adress below:</label>
-                                <input name ="name" style="width: 500px; margin-left:50px;" id="nameEntered" type="text" class=" name wideness form-control"  placeholder="Enter name..." />
-                                <input name="email" style="margin-left:50px; margin-top:15px;" id="emailEntered" type="email" class=" name wideness form-control" style="margin: 20px;" placeholder="Enter email..." />
-                        
+                                <div class="center">
+                                    <label style=";" class="text-monospace text-center nameAndEmail">What is your name?</label>
+                                    <!-- <input name ="name" style="width: 500px; margin-left:50px;" id="nameEntered" type="text" class=" name wideness form-control"  placeholder="Enter name..." /> -->
+                                    <input name="email" style="margin-left:50px; margin-top:15px;" id="emailEntered" type="email" class=" name wideness form-control" style="margin: 20px;" placeholder="Enter name..." />
+                                </div>
                             </div>
                             <div class="col-md-3"></div>
-                        </div>
+                        </div>  
                     </div>
                     <div class="row">
                         <div class="col-md-6 center" style="padding: 20px;">
@@ -69,7 +74,7 @@ include("functions.php");
                         </div>
                         <div class="col-md-6 center" style="padding: 20px;">
                             <h3>Select the amount of days you want to visit this hotel:</h3>
-                            <input id="days" name="days" type="number">
+                            <input style="height:10px; width:50%;" id="days" name="days" type="number">
                         </div>
                     </div>
                 </div>
@@ -83,16 +88,17 @@ include("functions.php");
                     </div>
                 </div>
             </div>
+</div>
 
             <div class=" white container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1><span class="text"></span></h1>
+                        <h1><span class="text"></span> <span class="nameOfPerson"></span> <span class="text7"></span> </h1>
                     </div>
                 </div>
                 <div class="row">
                         <div class="col-lg-12">
-                            <p><span class="text1"></span> <span class="hotelResult"></span> <span class="text2"></span><span class="daysResult"></span><span class="text3"></span><span class="totalCostResult"></span><span class="text4"></span><span class="perNightResult"></span><span class="text5"></span></p>
+                            <p><span class="text1"></span><span class="hotelResult"></span> <span class="text2"></span><span class="daysResult"></span><span class="text3"></span><span class="totalCostResult"></span><span class="text4"></span><span class="perNightResult"></span><span class="text5"></span></p>
                             <p> <span class="text6"></span> <span class="email"></span></p>
                         </div>
                     </div>
