@@ -99,7 +99,6 @@ include("functions.php");
             </div>
         </div>
     </form>
-    <script>alert("jaaaa")</script>
    
 
 
