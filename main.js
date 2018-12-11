@@ -32,11 +32,6 @@
 }
         
 
-function showAlert(){
-    alert("this is the alert    ");
-}
-
-
 function validateName(stringf) {
     if (stringf=="")
 {
