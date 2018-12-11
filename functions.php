@@ -1,27 +1,30 @@
+
 <?php
 // session_start();
-    
 // include("config.php ");
-$email = $_POST["email"];
-function email_updte($email) {
+function email_update($email) {
+    // Pleae make sure the below configuration will work on your system. Make any necesarry changes.
     $conn = mysqli_connect("localhost", "root", "", "hotel");
         
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    $sql = "SELECT * FROM emails WHERE $email = emails;";
-
+    $sql = "SELECT * FROM `emails` WHERE '$email' = `emails`";
     $query = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
     if(empty($row)){
-        $sql = "INSERT INTO hotels (emails) VALUES ('$email');";
+        $sql = "INSERT INTO emails (emails) VALUES ('$email');";
         $query = mysqli_query($conn, $sql);
         return true;
     }
-echo("<script>alert('Your email has already been used. We will still be sending you the info to your email unless spesified otherwise.')</script>");
+echo("<script>alert('Your email has already been used. We will still be sending the info to your email unless spesified otherwise.')</script>");
 return false;
 }
+
+
+// To avoid any errors run the SQL below in phpmyadmin and remove the below function and where it is called(index.php).
 function createDatabase() {
+    // Pleae make sure the below configuration will work on your system. Make any necesarry changes.
     $conn = mysqli_connect("localhost", "root", "");
         
     if (!$conn) {
@@ -37,11 +40,4 @@ function createDatabase() {
     $query = mysqli_query($conn, $sql);
 }
    
-
-email_updte($email);
-
-
-
-
-
 ?>
